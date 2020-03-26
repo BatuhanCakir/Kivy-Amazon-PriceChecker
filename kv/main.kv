@@ -1,0 +1,52 @@
+<Container>:
+    display: display
+    rows: 4
+    BoxLayout:
+        orientation: "vertical"
+
+        TextInput:
+            id:test1
+            focus : True
+            text: ''
+            width: 50
+            height:10
+            multiline: False
+            font_size: dp(25)
+
+            on_text_validate:
+                test2.focus = True
+                display.text ='Jetzt den Amazon Link'
+
+        TextInput:
+            id:test2
+            text: ' '
+            width: 50
+            multiline: False
+            font_size: dp(25)
+
+
+            on_text_validate:
+                test3.background_normal = 'dkmvsdk'
+                display.text ='Jetzt den gewünschten Preis'
+                test3.focus = True
+
+        TextInput:
+            id:test3
+            text: ' '
+            width: 50
+            font_size: dp(25)
+            multiline: False
+
+        Button:
+            text :"SUBMIT"
+            id: test4
+            font_size: dp(25)
+            on_release:
+                display.text ='Sie werden benachrichtigt wenn der Preis sinkt'
+                root.submit(test1.text,test2.text,test3.text)
+
+        Label:
+            id: display
+            font_size: dp(25)
+            multiline: True
+            text: 'Geben sie on das erste Feld ihr Email ein und drücken sie enter'
